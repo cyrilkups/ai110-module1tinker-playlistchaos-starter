@@ -168,7 +168,8 @@ def search_songs(
 
     for song in songs:
         value = str(song.get(field, "")).lower()
-        if value and value in q:
+        # Match partial queries like "que" against artist values like "queen".
+        if value and q in value:
             filtered.append(song)
 
     return filtered
